@@ -51,7 +51,7 @@ function startWriting() {
   progressBar.classList.remove("hidden");
   startTime = currentTime();
   isWriting = true;
-  timeoutID = setInterval(function tick() {
+  timeoutID = setInterval(function () {
     // Check finish condition
     if (isTimeMode) {
       if (timeSinceStart > timeSetting) {
