@@ -2,7 +2,7 @@
 
 //  settings
 let wordSetting = 50;
-let timeSetting = 60;
+let timeSetting = 4;
 
 let eraseTime = 5;
 let timeSinceStroke = 0;
@@ -42,6 +42,40 @@ const progressBar = document.getElementById("progressBar");
 
 // Main Runtime Based on isTimeMode
 
+function tick() {
+	// Check finish condition
+	if (isTimeMode) {
+  	if (timeSinceStart > timeSetting) {
+    	winWriting();
+		}
+  } else {
+  	if (wordCount === wordSetting) {
+    	winWriting();
+    }
+  }
+
+  if (willErase) {
+    if (timeSinceStroke > eraseTime) {
+      failWriting();
+      return;
+    }
+    // Dealing with Erase Timer
+    inputTextArea.style.opacity = textOpacity;
+    timeSinceStroke += tickSpeed/1000;
+    textOpacity -= (tickSpeed / (eraseTime * 1000));
+  }
+
+	//Dealing with Main Timer
+	timeSinceStart += tickSpeed/1000;
+  
+  // If we're on timeMode then we want to address the timer progress bar
+  // If we're not on timeMode, the progress bar is addressed in onKeyStroke
+  if (isTimeMode) {
+  	updateProgressBar();
+  }
+  
+}
+
 // Handling Erase Timer
 inputTextArea.addEventListener("input", onKeyStroke);
 
@@ -51,39 +85,7 @@ function startWriting() {
   progressBar.classList.remove("hidden");
   startTime = currentTime();
   isWriting = true;
-  timeoutID = setInterval(function () {
-    // Check finish condition
-    if (isTimeMode) {
-      if (timeSinceStart > timeSetting) {
-        winWriting();
-      }
-    } else {
-      if (wordCount === wordSetting) {
-        winWriting();
-      }
-    }
-  
-    if (willErase) {
-      if (timeSinceStroke > eraseTime) {
-        failWriting();
-        return;
-      }
-      // Dealing with Erase Timer
-      inputTextArea.style.opacity = textOpacity;
-      timeSinceStroke += tickSpeed/1000;
-      textOpacity -= (tickSpeed / (eraseTime * 1000));
-    }
-  
-    //Dealing with Main Timer
-    timeSinceStart += tickSpeed/1000;
-    
-    // If we're on timeMode then we want to address the timer progress bar
-    // If we're not on timeMode, the progress bar is addressed in onKeyStroke
-    if (isTimeMode) {
-      updateProgressBar();
-    }
-    
-  }, 10);
+  timeoutID = setInterval(tick, 10);
 }
 
 function onKeyStroke() {
@@ -111,7 +113,10 @@ function stopWriting() {
 
 function winWriting() {
 	stopWriting();
-	document.getElementById("lowerButtonSection").classList.remove("hidden");
+	document.getElementById("copyWork").classList.remove("hidden");
+  
+  //prompt writer if they want to continue writing without a limit
+  
 }
 
 function failWriting() {
@@ -125,9 +130,9 @@ function currentTime() {
 }
 
 function resetWriting() {
-  stopWriting();
+	stopWriting();
   inputTextArea.value = "";
-  progressBar.style.width = "100%";
+  progressBar.style.width = "100%";document.getElementById("copyWork").classList.add("hidden");
 }
 
 // Word Counter
