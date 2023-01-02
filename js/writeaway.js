@@ -125,6 +125,7 @@ function currentTime() {
 }
 
 function resetWriting() {
+  stopWriting();
   inputTextArea.value = "";
   progressBar.style.width = "100%";
 }
