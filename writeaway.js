@@ -42,40 +42,6 @@ const progressBar = document.getElementById("progressBar");
 
 // Main Runtime Based on isTimeMode
 
-function tick() {
-	// Check finish condition
-	if (isTimeMode) {
-  	if (timeSinceStart > timeSetting) {
-    	winWriting();
-		}
-  } else {
-  	if (wordCount === wordSetting) {
-    	winWriting();
-    }
-  }
-
-  if (willErase) {
-    if (timeSinceStroke > eraseTime) {
-      failWriting();
-      return;
-    }
-    // Dealing with Erase Timer
-    inputTextArea.style.opacity = textOpacity;
-    timeSinceStroke += tickSpeed/1000;
-    textOpacity -= (tickSpeed / (eraseTime * 1000));
-  }
-
-	//Dealing with Main Timer
-	timeSinceStart += tickSpeed/1000;
-  
-  // If we're on timeMode then we want to address the timer progress bar
-  // If we're not on timeMode, the progress bar is addressed in onKeyStroke
-  if (isTimeMode) {
-  	updateProgressBar();
-  }
-  
-}
-
 // Handling Erase Timer
 inputTextArea.addEventListener("input", onKeyStroke);
 
@@ -85,7 +51,39 @@ function startWriting() {
   progressBar.classList.remove("hidden");
   startTime = currentTime();
   isWriting = true;
-  timeoutID = setInterval(tick, 10);
+  timeoutID = setInterval(function tick() {
+    // Check finish condition
+    if (isTimeMode) {
+      if (timeSinceStart > timeSetting) {
+        winWriting();
+      }
+    } else {
+      if (wordCount === wordSetting) {
+        winWriting();
+      }
+    }
+  
+    if (willErase) {
+      if (timeSinceStroke > eraseTime) {
+        failWriting();
+        return;
+      }
+      // Dealing with Erase Timer
+      inputTextArea.style.opacity = textOpacity;
+      timeSinceStroke += tickSpeed/1000;
+      textOpacity -= (tickSpeed / (eraseTime * 1000));
+    }
+  
+    //Dealing with Main Timer
+    timeSinceStart += tickSpeed/1000;
+    
+    // If we're on timeMode then we want to address the timer progress bar
+    // If we're not on timeMode, the progress bar is addressed in onKeyStroke
+    if (isTimeMode) {
+      updateProgressBar();
+    }
+    
+  }, 10);
 }
 
 function onKeyStroke() {
