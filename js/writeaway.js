@@ -1,6 +1,6 @@
 // Settings and Other Global Variables
 
-//  settings
+//  settings (these mostly contain default settings as well
 let wordSetting = 50;
 let timeSetting = 60;
 
