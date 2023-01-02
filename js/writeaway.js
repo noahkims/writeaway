@@ -2,7 +2,7 @@
 
 //  settings
 let wordSetting = 50;
-let timeSetting = 60;
+let timeSetting = 4;
 
 let eraseTime = 5;
 let timeSinceStroke = 0;
@@ -80,7 +80,7 @@ function tick() {
 inputTextArea.addEventListener("input", onKeyStroke);
 
 function startWriting() {
-	document.getElementById("noteConfig").classList.add("opacityZero");
+	document.getElementById("noteConfig").style.visibility = "hidden";
   document.getElementById("footer").classList.add("hidden");
   progressBar.classList.remove("hidden");
   startTime = currentTime();
@@ -100,7 +100,7 @@ function onKeyStroke() {
 }
 
 function stopWriting() {
-	document.getElementById("noteConfig").classList.remove("opacityZero");
+	document.getElementById("noteConfig").style.visibility = "visible";
   document.getElementById("footer").classList.remove("hidden");
   progressBar.classList.add("hidden");
   isWriting = false;
