@@ -2,7 +2,7 @@
 
 //  settings
 let wordSetting = 50;
-let timeSetting = 4;
+let timeSetting = 60;
 
 let eraseTime = 5;
 let timeSinceStroke = 0;
