@@ -1,0 +1,152 @@
+html,
+body {
+  height: 100%;
+  margin: 10px;
+  font-family: "Roboto Mono";
+  background: var(--bg-color);
+}
+
+#mainapp {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+  
+#progressBar {
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: var(--main-color);
+  width: 100%;
+  height: 5px;
+}
+
+.buttonConfigs {
+  display: grid;
+  font-size: .75rem;
+  gap: 0.5rem;
+  grid-auto-flow: column;
+  height: max-content;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: .125s;
+  width: 100%;
+}
+
+.spacer {
+  background: var(--bg-color);
+  border-radius: 3px;
+  height: auto;
+  margin: 0.5rem 0;
+  transition: 0.25s;
+  width: 0.2rem;
+}
+
+.row {
+  background: var(--sub-alt-color);
+  border-radius: 5px;
+  display: flex;
+}
+
+#modeConfigs {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+#timeConfigs {
+  display: flex;
+}
+
+#wordConfigs {
+  display: flex;
+}
+
+#eraseTimeConfigs {
+  display: flex;
+}
+
+#userInputArea {
+  border: 2px solid var(--sub-alt-color);
+  border-radius: 5px;
+  caret-color: var(--caret-color);
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-top: 1em;
+  width: 65vw;
+  height: 30vh;
+  resize: none;
+  background: var(--bg-color);
+  opacity: 1;
+}
+#userInputArea:focus {
+  outline: none;
+  border: 2px solid var(--sub-color);
+}
+
+#footer {
+  bottom: 0;
+  position: fixed;
+}
+
+.title {
+  font-size: 36px;
+  color: var(--text-color);
+}
+
+.textButton {
+  align-content: center;
+  appearance: none;
+  color: var(--sub-color);
+  cursor: pointer;
+  display: grid;
+  font-family: inherit;
+  font-size: 1em;
+  gap: 0.25em;
+  grid-auto-flow: column;
+  height: min-content;
+  height: -moz-min-content;
+  line-height: 1.25em;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  transition: background .125s, color .125s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: max-content;
+  width: -moz-max-content;
+}
+
+.textButton.active {
+  color: var(--main-color);
+}
+
+.textButton:hover {
+  color: black;
+}
+
+.textButton:active {
+  color: var(--sub-color);
+}
+
+
+
+.hidden {
+  display: none !important;
+}
+
+.opacityZero {
+  opacity: 0;
+}
+
+:root {
+    --main-color:#da3333;
+    --caret-color: #da3333;
+    --sub-color: #aaaeb3;
+    --sub-alt-color: #d1d3d8;
+    --bg-color: #e1e1e3;
+    --text-color: #323437;
+    --error-color: #da3333;
+    --error-extra-color: #791717;
+    --colorful-error-color: #da3333;
+    --colorful-error-extra-color: #791717;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <link rel="stylesheet" href="writeaway.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <script src="writeaway.js"></script>
+    <title>Writeaway</title>
+  </head>
+
+  <body>
+    <div id="mainapp">
+      <!--MAIN CONTENT: all the main content will have 
+                common styling attributes like font-->
+      <div id="maincontent">
+
+        <!--TOP SECTION: the top section is responsible for the title-->
+        <div id="topSection">
+          <div class="hidden" id="progressBar"></div>
+          <div class="title" id="apptitle">writeaway</div>
+        </div>
+
+        <!--MIDDLE SECTION: the middle section is responsbile for
+                    mode settings as well as the main textbox where users will type-->
+        <div id="midSection">
+          <div class="activePage active" id="activePage">
+            <div class="buttonConfigs" id="noteConfig">
+              <div class="row" id="eraseConfigs">
+                <div id="eraseSetting">
+                    <div class="textButton active" id="eraseToggle">erase</div>
+                </div>
+                <div class="spacer"></div>
+                <div id="eraseTimeConfig"></div>
+                    <div class="textButton active" id="5seconds">5s</div>
+                    <div class="textButton" id="10seconds">10s</div>
+              </div>
+              <div class="row" id="otherConfigs">
+                <div class="modeConfigs" id="modeConfigs">
+                    <div class="textButton active" id="timeMode">time</div>
+                    <div class="textButton" id="wordMode">words</div>
+                </div>
+                <div class="spacer"></div>
+                <div class="timeConfigs" id="timeConfigs">
+                    <div class="timeConfigButton textButton active" id="1min">1m</div>
+                    <div class="timeConfigButton textButton" id="2min">2m</div>
+                    <div class="timeConfigButton textButton" id="5min">5m</div>
+                </div>
+                <div class="wordConfigs hidden" id="wordConfigs">
+                    <div class="wordConfigButton textButton active" id="50">50</div>
+                    <div class="wordConfigButton textButton" id="100">100</div>
+                    <div class="wordConfigButton textButton" id="250">250</div>
+                </div>
+              </div>
+            </div> 
+            <div id="userInputInterface">
+              <textarea id="userInputArea" placeholder="write away . . ."></textarea>
+            </div>
+            <div class="buttonConfigs hidden" id="lowerButtonSection">
+              <div class="row">
+                <div id="lowerButton1">
+                  <div class="textButton" id="copyWork">copy work</div>
+                </div>
+              </div>
+             <div class="row">
+                <div id="lowerButton2">
+                  <div class="textButton" id="resetWork">reset</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--BOTTOM SECTION: not sure if theres anything here-->
+        <div id="bottomSection">
+
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <footer id="footer">
+    <small>footer placeholder</small>
+  </footer>
+
+</html>
